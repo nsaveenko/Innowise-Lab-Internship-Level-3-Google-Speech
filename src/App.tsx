@@ -1,11 +1,11 @@
 import React from 'react';
+import Router from './router/Router';
+import AuthProvider from '../src/contexts/AuthContext';
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <h1>App</h1>
-    </div>
+    <AuthProvider>
+      <Router />
+    </AuthProvider>
   );
 }
-
-export default App;

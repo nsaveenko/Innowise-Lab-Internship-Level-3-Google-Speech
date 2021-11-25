@@ -1,8 +1,62 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.main {
+  max-width: 762px;
+  width: 100%;
+  padding-top: 60px;
+  padding: 30px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  transition: .5s;
+  background-image: url(./asserts/images/background.png);
+  background-size: cover;
+}
+
+.primary-button {
+  min-width: 150px;
+  background-color: #5bddc6;
+  color: #fff;
+  border: 1px solid #5bddc6;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+.primary-button:hover {
+  background-color: transparent;
+  border: 1px solid #fff;
 }
