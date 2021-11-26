@@ -22,12 +22,13 @@
   font-weight: 400;
   cursor: pointer;
   text-decoration: none;
-  color: #fff;
+  color: #5bddc6;
+  text-transform: uppercase;
   z-index: 1;
 }
 
 .page-title:visited {
-  color: #fff;
+  color: #5bddc6;
 }
 
 .page-title:hover {

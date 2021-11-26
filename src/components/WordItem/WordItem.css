@@ -1,0 +1,14 @@
+.word-item {
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  max-width: 100px;
+}
+
+.word-item-title {
+  font-weight: 400;
+}
+
+.word-item-title span {
+  display: block;
+}

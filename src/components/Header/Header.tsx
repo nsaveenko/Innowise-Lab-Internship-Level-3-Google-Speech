@@ -28,7 +28,7 @@ export default function Header() {
   return (
     <div className='header'>
       <Toaster position='top-right' />
-      <NavLink to='/' className='page-title'>Speackit</NavLink>
+      <NavLink to='/' className='page-title'>Speakit</NavLink>
       <h3 className='email-title'>{currentUserEmail}</h3>
       <button
         className='primary-button header-button'
