@@ -3,10 +3,10 @@ import axios from 'axios';
 import { IWordAction, WordActionTypes } from '../../types/word';
 import { ERROR_MESSAGES } from '../../utils/messages';
 
-const fetchWords = async (dispatch: Dispatch<IWordAction>) => {
+const fetchWords = (page: number) => async (dispatch: Dispatch<IWordAction>) => {
   try {
     dispatch({ type: WordActionTypes.FETCH_WORDS });
-    const response = await axios.get('https://afternoon-falls-25894.herokuapp.com/words?page=1&group=0');
+    const response = await axios.get(`https://afternoon-falls-25894.herokuapp.com/words?page=${page}&group=0`);
     dispatch({ type: WordActionTypes.FETCH_WORDS_SUCCESS, payload: response.data });
   } catch (e) {
     dispatch({

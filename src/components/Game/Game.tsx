@@ -16,7 +16,7 @@ const Game = () => {
       </h2>
       <Levels setActiveLevel={setActiveLevel} />
       <img className='game-image' src={imagePath} alt='explanation of the word' />
-      <WordsList />
+      <WordsList page={activeLevel} />
     </div>
   );
 };
