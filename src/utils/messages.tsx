@@ -4,7 +4,7 @@ export const ERROR_MESSAGES = {
   SIGN_UP_MESSAGE_PASSWORD_LENGTH: 'Password should be at least 6 characters',
   SIGN_UP_MESSAGE_ACCOUNT_CREATION: 'Failed to create an account',
   SIGN_OUT_MESSAGE: 'Failed to sign out',
-  POST_NOT_UPLOADED_MESSAGE: 'Post were not uploaded',
+  WORD_NOT_LOADED_MESSAGE: 'Words were not loaded',
 };
 
 export const INFO_MESSAGES = {

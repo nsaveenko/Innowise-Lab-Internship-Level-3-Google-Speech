@@ -4,7 +4,7 @@ import './WordItem.css';
 
 const WordItem = ({ word, transcription }: IWordItem) => {
   return (
-    <div className='word-item'>
+    <div role='button' className='word-item'>
       <h3 className='word-item-title'>
         <span>{word}</span>
         <span>{transcription}</span>

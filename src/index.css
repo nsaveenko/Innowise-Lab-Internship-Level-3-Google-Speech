@@ -18,8 +18,16 @@ ul {
   list-style-type: none;
 }
 
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+}
+
 .main {
-  max-width: 762px;
+  max-width: 1200px;
   width: 100%;
   padding-top: 60px;
   padding: 30px;

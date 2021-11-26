@@ -6,8 +6,7 @@ import './Game.css';
 
 const Game = () => {
   const [activeLevel, setActiveLevel] = useState<number>(1);
-  // eslint-disable-next-line no-unused-vars
-  const [imagePath, setImagePath] = useState<string>(START_IMG_PATH);
+  const [imagePath] = useState<string>(START_IMG_PATH);
 
   return (
     <div className='wrapper'>
