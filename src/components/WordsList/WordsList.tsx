@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import useTypedSelector from '../../hooks/useTypeSelector';
+import { FILES_STORE_PATH } from '../../utils/constants';
 import fetchWords from '../../store/actions/word';
 import { IWord } from '../../types/word';
 import WordItem from '../WordItem/WordItem';
 import { IWordList } from './IWordList';
 import './WordsList.css';
 
-const WordsList = ({ page }: IWordList) => {
+const WordsList = ({ page, setImagePath, setAudioPath }: IWordList) => {
   const { words, error, loading } = useTypedSelector((state) => state.word);
   const dispatch = useDispatch();
 
@@ -28,6 +29,12 @@ const WordsList = ({ page }: IWordList) => {
     toast.error(error);
   }
 
+  const handleWorldClick = (image: string, audio: string, translation: string) => {
+    setImagePath(FILES_STORE_PATH + image);
+    setAudioPath(FILES_STORE_PATH + audio);
+    toast(translation);
+  };
+
   return (
     <div className='words-list'>
       <Toaster position='top-right' />
@@ -38,6 +45,9 @@ const WordsList = ({ page }: IWordList) => {
             word={word.word}
             transcription={word.transcription}
             image={word.image}
+            audio={word.audio}
+            translation={word.wordTranslate}
+            handleWorldClick={handleWorldClick}
           />
         );
       })}

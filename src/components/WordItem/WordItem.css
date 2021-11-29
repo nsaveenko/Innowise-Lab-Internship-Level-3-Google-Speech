@@ -2,7 +2,7 @@
   padding: 10px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border: 1px solid rgb(206, 212, 218);
   border-radius: 5px;
   cursor: pointer;
@@ -10,6 +10,7 @@
   line-height: 1.4;
   min-width: 200px;
   text-align: center;
+  color: #566165;
 }
 
 .word-item:hover {
@@ -17,9 +18,18 @@
 }
 
 .word-item-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   font-weight: 400;
 }
 
 .word-item-title span {
   display: block;
+}
+
+.word-item-title span:nth-child(1) {
+  color: #000;
 }

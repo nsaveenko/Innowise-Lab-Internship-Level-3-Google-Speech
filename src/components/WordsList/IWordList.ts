@@ -1,6 +1,6 @@
-import React from 'react';
-
 export interface IWordList {
-  setImagePath?: React.Dispatch<React.SetStateAction<string>>;
+  setImagePath?: any;
+  setAudioPath?: any;
   page: number;
+  song?: HTMLAudioElement;
 }

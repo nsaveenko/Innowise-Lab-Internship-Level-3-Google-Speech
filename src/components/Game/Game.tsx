@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
-import START_IMG_PATH from '../../utils/constants';
+import React, { useState, useEffect } from 'react';
+import { START_IMG_PATH } from '../../utils/constants';
 import Levels from '../Levels/Levels';
 import WordsList from '../WordsList/WordsList';
 import './Game.css';
 
 const Game = () => {
   const [activeLevel, setActiveLevel] = useState<number>(1);
-  const [imagePath] = useState<string>(START_IMG_PATH);
+  const [imagePath, setImagePath] = useState<string>(START_IMG_PATH);
+  const [audioPath, setAudioPath] = useState<string>();
+  const song = new Audio(audioPath);
+
+  useEffect(() => {
+    song.play();
+  }, [audioPath]);
 
   return (
     <div className='wrapper'>
@@ -15,8 +21,17 @@ const Game = () => {
         {activeLevel}
       </h2>
       <Levels setActiveLevel={setActiveLevel} />
-      <img className='game-image' src={imagePath} alt='explanation of the word' />
-      <WordsList page={activeLevel} />
+      <img
+        className='game-image'
+        src={imagePath}
+        alt='explanation of the word'
+      />
+      <WordsList
+        page={activeLevel}
+        setImagePath={setImagePath}
+        setAudioPath={setAudioPath}
+        song={song}
+      />
     </div>
   );
 };

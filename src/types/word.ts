@@ -11,6 +11,7 @@ export interface IWord {
   transcription: string;
   image: string;
   audio: string;
+  wordTranslate?: string;
 }
 
 export enum WordActionTypes {
