@@ -19,7 +19,7 @@ const WordItem = ({
     <div
       role='button'
       tabIndex={0}
-      onClick={() => handleWorldClick(image, audio, translation)}
+      onClick={() => handleWorldClick(image, audio, translation, word)}
       onKeyPress={handleKey}
       className='word-item'
     >

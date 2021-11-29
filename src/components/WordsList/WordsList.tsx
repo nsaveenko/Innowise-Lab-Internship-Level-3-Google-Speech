@@ -9,7 +9,7 @@ import WordItem from '../WordItem/WordItem';
 import { IWordList } from './IWordList';
 import './WordsList.css';
 
-const WordsList = ({ page, setImagePath, setAudioPath }: IWordList) => {
+const WordsList = ({ page, setImagePath, setAudioPath, setWord }: IWordList) => {
   const { words, error, loading } = useTypedSelector((state) => state.word);
   const dispatch = useDispatch();
 
@@ -29,9 +29,10 @@ const WordsList = ({ page, setImagePath, setAudioPath }: IWordList) => {
     toast.error(error);
   }
 
-  const handleWorldClick = (image: string, audio: string, translation: string) => {
+  const handleWorldClick = (image: string, audio: string, translation: string, word: string) => {
     setImagePath(FILES_STORE_PATH + image);
     setAudioPath(FILES_STORE_PATH + audio);
+    setWord(word);
     toast(translation);
   };
 
