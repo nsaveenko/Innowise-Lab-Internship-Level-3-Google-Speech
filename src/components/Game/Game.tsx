@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { START_IMG_PATH } from '../../utils/constants';
 import Levels from '../Levels/Levels';
+import Recorder from '../Recorder/Recorder';
 import WordsList from '../WordsList/WordsList';
 import './Game.css';
 
@@ -32,6 +33,7 @@ const Game = () => {
         setAudioPath={setAudioPath}
         song={song}
       />
+      <Recorder />
     </div>
   );
 };

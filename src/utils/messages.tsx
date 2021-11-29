@@ -10,4 +10,5 @@ export const ERROR_MESSAGES = {
 export const INFO_MESSAGES = {
   CREATED: 'Successfully created!',
   LOADING: 'Loading...',
+  NOT_SUPPORT_RECOGNITION: 'Browser does not support speech recognition',
 };
