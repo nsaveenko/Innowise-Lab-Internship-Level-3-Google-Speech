@@ -1,7 +1,8 @@
 import { IResultItem } from "../Game/Game";
 
 export interface IRecognition {
+  activeLevel: number;
   word: string;
-  result: IResultItem[];
+  results: IResultItem[];
   setResult: any;
 }

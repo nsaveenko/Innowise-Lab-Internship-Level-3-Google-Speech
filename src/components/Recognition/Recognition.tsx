@@ -7,7 +7,7 @@ import { INFO_MESSAGES } from '../../utils/messages';
 import { IRecognition } from './IRecognition';
 import './Recognition.css';
 
-const Recognition = ({ word, result, setResult }: IRecognition) => {
+const Recognition = ({ word, results, setResult }: IRecognition) => {
   const {
     transcript,
     listening,
@@ -26,7 +26,7 @@ const Recognition = ({ word, result, setResult }: IRecognition) => {
       } else {
         answer[word] = false;
       }
-      setResult([...result, answer]);
+      setResult([...results, answer]);
     }
   }, [transcript, listening]);
 

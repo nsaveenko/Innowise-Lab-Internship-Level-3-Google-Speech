@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IWordItem } from './IWordItem';
 import SoundIcon from '../../asserts/icons/SoundIcon/SoundIcon';
 import './WordItem.css';
 
 const WordItem = ({
+  results,
   word,
   translation,
   transcription,
@@ -15,13 +16,25 @@ const WordItem = ({
     return null;
   };
 
+  const [cls, setCls] = useState<string[]>(['word-item']);
+
+  useEffect(() => {
+    results.forEach((resultItem: any) => {
+      if (resultItem[word] === true) {
+        setCls([...cls, 'correct']);
+      } else if (resultItem[word] === false) {
+        setCls([...cls, 'incorrect']);
+      }
+    });
+  }, [results]);
+
   return (
     <div
       role='button'
       tabIndex={0}
       onClick={() => handleWorldClick(image, audio, translation, word)}
       onKeyPress={handleKey}
-      className='word-item'
+      className={cls.join(' ')}
     >
       <SoundIcon />
       <h3 className='word-item-title'>

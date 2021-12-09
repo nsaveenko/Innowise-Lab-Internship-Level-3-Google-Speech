@@ -9,7 +9,7 @@ import WordItem from '../WordItem/WordItem';
 import { IWordList } from './IWordList';
 import './WordsList.css';
 
-const WordsList = ({ page, setImagePath, setAudioPath, setWord }: IWordList) => {
+const WordsList = ({ results, page, setImagePath, setAudioPath, setWord }: IWordList) => {
   const { words, error, loading } = useTypedSelector((state) => state.word);
   const dispatch = useDispatch();
 
@@ -42,6 +42,7 @@ const WordsList = ({ page, setImagePath, setAudioPath, setWord }: IWordList) => 
       {words?.slice(0, 10).map((word: IWord) => {
         return (
           <WordItem
+            results={results}
             key={word.id}
             word={word.word}
             transcription={word.transcription}

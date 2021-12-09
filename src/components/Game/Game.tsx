@@ -14,16 +14,16 @@ const Game = () => {
   const [word, setWord] = useState<string>('');
   const [imagePath, setImagePath] = useState<string>(START_IMG_PATH);
   const [audioPath, setAudioPath] = useState<string>();
+  const [results, setResult] = useState<IResultItem[]>([]);
   const song = new Audio(audioPath);
-  const [result, setResult] = useState<IResultItem[]>([]);
 
   useEffect(() => {
     song.play();
   }, [audioPath]);
 
   useEffect(() => {
-    console.log(result);
-  }, [result]);
+    console.log('game comp', results);
+  }, [results]);
 
   return (
     <div className='wrapper'>
@@ -38,13 +38,19 @@ const Game = () => {
         alt='explanation of the word'
       />
       <WordsList
+        results={results}
         page={activeLevel}
         setImagePath={setImagePath}
         setAudioPath={setAudioPath}
         setWord={setWord}
         song={song}
       />
-      <Recognition word={word} result={result} setResult={setResult} />
+      <Recognition
+        activeLevel={activeLevel}
+        word={word}
+        results={results}
+        setResult={setResult}
+      />
     </div>
   );
 };

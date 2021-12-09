@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: flex-start;
   border: 1px solid rgb(206, 212, 218);
+  box-shadow: rgb(206, 212, 218) 0px 2px 2px 0px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 24px;
@@ -15,6 +16,14 @@
 
 .word-item:hover {
   transform: scale(1.1);
+}
+
+.correct {
+  box-shadow: #00af61 0px 2px 2px 0px;
+}
+
+.incorrect {
+  box-shadow: #db5B4b 0px 2px 2px 0px;
 }
 
 .word-item-title {
