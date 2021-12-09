@@ -7,32 +7,28 @@ import { INFO_MESSAGES } from '../../utils/messages';
 import { IRecognition } from './IRecognition';
 import './Recognition.css';
 
-const Recognition = ({ word }: IRecognition) => {
+const Recognition = ({ word, result, setResult }: IRecognition) => {
   const {
     transcript,
     listening,
     resetTranscript,
   } = useSpeechRecognition();
 
-  const answer: string[] = [];
-
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     toast.error(INFO_MESSAGES.NOT_SUPPORT_RECOGNITION);
   }
 
   useEffect(() => {
-    if (listening && transcript) {
-      answer.push(transcript);
-    }
-
-    if (answer.length) {
-      if (answer[answer.length - 1] === word) {
-        toast.success('Correct');
+    if (!listening && transcript) {
+      const answer: any = {};
+      if (transcript === word) {
+        answer[word] = true;
       } else {
-        toast.error('Incorrect');
+        answer[word] = false;
       }
+      setResult([...result, answer]);
     }
-  }, [transcript]);
+  }, [transcript, listening]);
 
   return (
     <>

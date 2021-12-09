@@ -1,4 +1,7 @@
+import { IResultItem } from "../Game/Game";
+
 export interface IRecognition {
   word: string;
-  setIsCorrect?: any;
+  result: IResultItem[];
+  setResult: any;
 }

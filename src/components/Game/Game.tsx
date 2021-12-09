@@ -5,18 +5,25 @@ import Recognition from '../Recognition/Recognition';
 import WordsList from '../WordsList/WordsList';
 import './Game.css';
 
+export interface IResultItem {
+  word: boolean;
+}
+
 const Game = () => {
   const [activeLevel, setActiveLevel] = useState<number>(1);
   const [word, setWord] = useState<string>('');
   const [imagePath, setImagePath] = useState<string>(START_IMG_PATH);
   const [audioPath, setAudioPath] = useState<string>();
-  // eslint-disable-next-line no-unused-vars
-  const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const song = new Audio(audioPath);
+  const [result, setResult] = useState<IResultItem[]>([]);
 
   useEffect(() => {
     song.play();
   }, [audioPath]);
+
+  useEffect(() => {
+    console.log(result);
+  }, [result]);
 
   return (
     <div className='wrapper'>
@@ -37,7 +44,7 @@ const Game = () => {
         setWord={setWord}
         song={song}
       />
-      <Recognition word={word} setIsCorrect={setIsCorrect} />
+      <Recognition word={word} result={result} setResult={setResult} />
     </div>
   );
 };
