@@ -1,4 +1,4 @@
-import { IResultItem } from "../Game/Game";
+import { IResultItem } from '../Game/Game';
 
 export interface IWordItem {
   results: IResultItem[];

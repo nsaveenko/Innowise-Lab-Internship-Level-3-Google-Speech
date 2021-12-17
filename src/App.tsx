@@ -4,8 +4,10 @@ import AuthProvider from '../src/contexts/AuthContext';
 
 export default function App() {
   return (
-    <AuthProvider>
-      <Router />
-    </AuthProvider>
+    <div id='app'>
+      <AuthProvider>
+        <Router />
+      </AuthProvider>
+    </div>
   );
 }

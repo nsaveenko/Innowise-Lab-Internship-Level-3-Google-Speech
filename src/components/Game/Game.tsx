@@ -6,7 +6,8 @@ import WordsList from '../WordsList/WordsList';
 import './Game.css';
 
 export interface IResultItem {
-  word: boolean;
+  word: string;
+  isCorrect: boolean;
 }
 
 const Game = () => {

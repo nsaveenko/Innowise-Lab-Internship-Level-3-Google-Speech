@@ -20,9 +20,9 @@ const WordItem = ({
 
   useEffect(() => {
     results.forEach((resultItem: any) => {
-      if (resultItem[word] === true) {
+      if (resultItem.word === word && resultItem.isCorrect === true) {
         setCls([...cls, 'correct']);
-      } else if (resultItem[word] === false) {
+      } else if (resultItem.word === word && resultItem.isCorrect === false) {
         setCls([...cls, 'incorrect']);
       }
     });
