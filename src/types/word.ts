@@ -6,7 +6,7 @@ export interface IWordState {
 }
 
 export interface IWord {
-  id: string;
+  id?: string;
   word: string;
   transcription: string;
   image: string;

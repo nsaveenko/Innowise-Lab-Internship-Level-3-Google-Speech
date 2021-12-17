@@ -9,14 +9,16 @@ import { INFO_MESSAGES } from '../../utils/messages';
 import { IResultItem } from '../Game/Game';
 import { IRecognition } from './IRecognition';
 import './Recognition.css';
+import Results from '../Results/Results';
 
-const Recognition = ({ word, results, setResult }: IRecognition) => {
+const Recognition = ({ word, results, setResult, handleWorldClick }: IRecognition) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   Modal.setAppElement('#app');
 
   const customStyles = {
     content: {
+      width: '400px',
       top: '50%',
       left: '50%',
       right: 'auto',
@@ -34,13 +36,10 @@ const Recognition = ({ word, results, setResult }: IRecognition) => {
     setIsOpen(false);
   }
 
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-  } = useSpeechRecognition();
-  const answer: any = {};
-  const isWordExist = results.filter((result: IResultItem) => result.word === word).length > 0;
+  const { transcript, listening, resetTranscript } = useSpeechRecognition();
+  const isWordExist = results.filter((result: IResultItem) => result.word === word.word).length > 0;
+
+  const answer: IResultItem = {};
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     toast.error(INFO_MESSAGES.NOT_SUPPORT_RECOGNITION);
@@ -48,7 +47,6 @@ const Recognition = ({ word, results, setResult }: IRecognition) => {
 
   const skip = () => {
     if (!isWordExist) {
-      answer.word = word;
       answer.isCorrect = false;
       setResult([...results, answer]);
     }
@@ -56,19 +54,24 @@ const Recognition = ({ word, results, setResult }: IRecognition) => {
 
   const correct = () => {
     if (!isWordExist) {
-      answer.word = word;
       answer.isCorrect = true;
       setResult([...results, answer]);
     }
   };
 
   useEffect(() => {
+    if (!isWordExist) {
+      answer.word = word.word;
+      answer.transcription = word.transcription;
+      answer.audioPath = word.audio;
+    }
+  }, [word]);
+
+  useEffect(() => {
     if (!listening && transcript) {
-      if (transcript === word) {
-        answer.word = word;
+      if (transcript === word.word && !isWordExist) {
         answer.isCorrect = true;
-      } else {
-        answer.word = word;
+      } else if (transcript !== word.word && !isWordExist) {
         answer.isCorrect = false;
       }
       setResult([...results, answer]);
@@ -79,26 +82,55 @@ const Recognition = ({ word, results, setResult }: IRecognition) => {
     <>
       <Toaster position='top-right' />
       <div className='recognition'>
-        <button className='secondary-button' type='button' onClick={() => SpeechRecognition.startListening()}>
+        <button
+          className='secondary-button'
+          type='button'
+          onClick={() => SpeechRecognition.startListening()}
+        >
           Record answer
         </button>
-        <button className='secondary-button' type='button' onClick={resetTranscript}>
+        <button
+          className='secondary-button'
+          type='button'
+          onClick={resetTranscript}
+        >
           Reset answer
         </button>
-        <button className='secondary-button' type='button' onClick={() => skip()}>
+        <button
+          className='secondary-button'
+          type='button'
+          onClick={() => skip()}
+        >
           Skip
         </button>
-        <button className='secondary-button' type='button' onClick={() => correct()}>
+        <button
+          className='secondary-button'
+          type='button'
+          onClick={() => correct()}
+        >
           Correct
         </button>
         <div>
-          <button className='secondary-button' type='button' onClick={openModal}>Results</button>
+          <button
+            className='secondary-button'
+            type='button'
+            onClick={openModal}
+          >
+            Results
+          </button>
           <Modal
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             style={customStyles}
           >
-            <h1>MY MODAL</h1>
+            <Results handleWorldClick={handleWorldClick} results={results} />
+            <button
+              className='secondary-button'
+              type='button'
+              onClick={() => closeModal()}
+            >
+              Close
+            </button>
           </Modal>
         </div>
       </div>

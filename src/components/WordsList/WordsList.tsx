@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import useTypedSelector from '../../hooks/useTypeSelector';
-import { FILES_STORE_PATH } from '../../utils/constants';
 import fetchWords from '../../store/actions/word';
 import { IWord } from '../../types/word';
 import WordItem from '../WordItem/WordItem';
 import { IWordList } from './IWordList';
 import './WordsList.css';
+import { IWordItem } from '../WordItem/IWordItem';
 
-const WordsList = ({ results, page, setImagePath, setAudioPath, setWord }: IWordList) => {
+const WordsList = ({ results, page, setWord }: IWordList) => {
   const { words, error, loading } = useTypedSelector((state) => state.word);
   const dispatch = useDispatch();
 
@@ -29,11 +29,11 @@ const WordsList = ({ results, page, setImagePath, setAudioPath, setWord }: IWord
     toast.error(error);
   }
 
-  const handleWorldClick = (image: string, audio: string, translation: string, word: string) => {
-    setImagePath(FILES_STORE_PATH + image);
-    setAudioPath(FILES_STORE_PATH + audio);
+  const handleWorldClick = (word: IWordItem) => {
     setWord(word);
-    toast(translation);
+    if (word.translation) {
+      toast(word.translation);
+    }
   };
 
   return (
@@ -42,8 +42,8 @@ const WordsList = ({ results, page, setImagePath, setAudioPath, setWord }: IWord
       {words?.slice(0, 10).map((word: IWord) => {
         return (
           <WordItem
-            results={results}
             key={word.id}
+            results={results}
             word={word.word}
             transcription={word.transcription}
             image={word.image}

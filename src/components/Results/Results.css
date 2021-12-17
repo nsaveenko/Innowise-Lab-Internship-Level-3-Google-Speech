@@ -1,0 +1,59 @@
+.results-container {
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  flex-direction: column;
+}
+
+.result-header {
+  margin: 10px auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.result-title {
+  font-weight: 400;
+}
+
+.count-title {
+  margin-left: 10px;
+  padding: 3px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.count-title-correct {
+  background-color: #00af61;
+}
+
+.count-title-incorrect {
+  background-color: #dd6657;
+}
+
+.result-words-list {
+  padding: 6px;
+}
+
+.word-title {
+  display: flex;
+  align-items: center;
+  font-weight: 300;
+  cursor: pointer;
+  color: #566165;
+}
+
+.word-title h5 {
+  margin: 0 7px 0 7px;
+}
+
+.word-title:hover {
+  color: #5bddc6;
+}

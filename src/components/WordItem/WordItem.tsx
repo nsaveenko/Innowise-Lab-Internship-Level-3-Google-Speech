@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { IWordItem } from './IWordItem';
 import SoundIcon from '../../asserts/icons/SoundIcon/SoundIcon';
+import { FILES_STORE_PATH } from '../../utils/constants';
+import { IWord } from '../../types/word';
+import { IWordItem } from './IWordItem';
 import './WordItem.css';
 
 const WordItem = ({
@@ -14,6 +16,14 @@ const WordItem = ({
 }: IWordItem) => {
   const handleKey = () => {
     return null;
+  };
+
+  const wordItem: IWord = {
+    word,
+    audio: FILES_STORE_PATH + audio,
+    image: FILES_STORE_PATH + image,
+    wordTranslate: translation,
+    transcription,
   };
 
   const [cls, setCls] = useState<string[]>(['word-item']);
@@ -32,7 +42,7 @@ const WordItem = ({
     <div
       role='button'
       tabIndex={0}
-      onClick={() => handleWorldClick(image, audio, translation, word)}
+      onClick={() => handleWorldClick(wordItem)}
       onKeyPress={handleKey}
       className={cls.join(' ')}
     >

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { IWord } from '../../types/word';
 import { START_IMG_PATH } from '../../utils/constants';
 import Levels from '../Levels/Levels';
 import Recognition from '../Recognition/Recognition';
@@ -6,21 +7,21 @@ import WordsList from '../WordsList/WordsList';
 import './Game.css';
 
 export interface IResultItem {
-  word: string;
-  isCorrect: boolean;
+  word?: string;
+  audioPath?: string;
+  transcription?: string;
+  isCorrect?: boolean;
 }
 
 const Game = () => {
   const [activeLevel, setActiveLevel] = useState<number>(1);
-  const [word, setWord] = useState<string>('');
-  const [imagePath, setImagePath] = useState<string>(START_IMG_PATH);
-  const [audioPath, setAudioPath] = useState<string>();
+  const [word, setWord] = useState<IWord>({ word: '', audio: '', image: START_IMG_PATH, transcription: '' });
   const [results, setResult] = useState<IResultItem[]>([]);
-  const song = new Audio(audioPath);
+  const song = new Audio(word.audio);
 
   useEffect(() => {
     song.play();
-  }, [audioPath]);
+  }, [word]);
 
   useEffect(() => {
     console.log('game comp', results);
@@ -35,14 +36,12 @@ const Game = () => {
       <Levels setActiveLevel={setActiveLevel} />
       <img
         className='game-image'
-        src={imagePath}
+        src={word.image}
         alt='explanation of the word'
       />
       <WordsList
         results={results}
         page={activeLevel}
-        setImagePath={setImagePath}
-        setAudioPath={setAudioPath}
         setWord={setWord}
         song={song}
       />

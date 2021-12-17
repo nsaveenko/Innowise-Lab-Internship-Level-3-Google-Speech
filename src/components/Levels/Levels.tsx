@@ -7,7 +7,6 @@ const Levels = ({ setActiveLevel }: ILevels) => {
 
   const handleChangeLevel = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as Element;
-    // target.classList.add('active-level');
     setActiveLevel(Number(target.id));
   };
 
