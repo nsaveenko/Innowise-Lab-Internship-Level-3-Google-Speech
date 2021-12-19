@@ -36,7 +36,7 @@ const Recognition = ({ word, results, setResult, handleWorldClick }: IRecognitio
     setIsOpen(false);
   }
 
-  const { transcript, listening, resetTranscript } = useSpeechRecognition();
+  const { transcript, listening } = useSpeechRecognition();
   const isWordExist = results.filter((result: IResultItem) => result.word === word.word).length > 0;
 
   const answer: IResultItem = {};
@@ -60,23 +60,30 @@ const Recognition = ({ word, results, setResult, handleWorldClick }: IRecognitio
   };
 
   useEffect(() => {
-    if (!isWordExist) {
-      answer.word = word.word;
-      answer.transcription = word.transcription;
-      answer.audioPath = word.audio;
+    if (word.wordTranslate) {
+      toast(word.wordTranslate);
     }
   }, [word]);
 
   useEffect(() => {
-    if (!listening && transcript) {
-      if (transcript === word.word && !isWordExist) {
+    if (!listening && transcript && !isWordExist) {
+      answer.word = word.word;
+      answer.transcription = word.transcription;
+      answer.audioPath = word.audio;
+      if (transcript === word.word) {
         answer.isCorrect = true;
-      } else if (transcript !== word.word && !isWordExist) {
+      } else if (transcript !== word.word) {
         answer.isCorrect = false;
       }
       setResult([...results, answer]);
     }
   }, [transcript, listening]);
+
+  useEffect(() => {
+    if (results.length >= 10) {
+      openModal();
+    }
+  }, [results]);
 
   return (
     <>
@@ -88,13 +95,6 @@ const Recognition = ({ word, results, setResult, handleWorldClick }: IRecognitio
           onClick={() => SpeechRecognition.startListening()}
         >
           Record answer
-        </button>
-        <button
-          className='secondary-button'
-          type='button'
-          onClick={resetTranscript}
-        >
-          Reset answer
         </button>
         <button
           className='secondary-button'
@@ -111,13 +111,13 @@ const Recognition = ({ word, results, setResult, handleWorldClick }: IRecognitio
           Correct
         </button>
         <div>
-          <button
+          {/* <button
             className='secondary-button'
             type='button'
             onClick={openModal}
           >
             Results
-          </button>
+          </button> */}
           <Modal
             isOpen={modalIsOpen}
             onRequestClose={closeModal}

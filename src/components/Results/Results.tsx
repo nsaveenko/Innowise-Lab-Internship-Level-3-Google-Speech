@@ -13,7 +13,9 @@ const Results = ({ results }: IResult) => {
   const song = new Audio(currWord?.audioPath);
 
   useEffect(() => {
-    song.play();
+    if (currWord?.audioPath) {
+      song.play();
+    }
   }, [currWord]);
 
   return (
@@ -27,6 +29,7 @@ const Results = ({ results }: IResult) => {
           .map((result: IResultItem) => {
             return (
               <div
+                key={result.word}
                 role='button'
                 tabIndex={0}
                 onClick={() => setCurrWord(result)}
@@ -49,6 +52,7 @@ const Results = ({ results }: IResult) => {
           .map((result: IResultItem) => {
             return (
               <div
+                key={result.word}
                 role='button'
                 tabIndex={0}
                 onClick={() => setCurrWord(result)}

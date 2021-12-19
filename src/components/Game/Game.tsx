@@ -20,7 +20,9 @@ const Game = () => {
   const song = new Audio(word.audio);
 
   useEffect(() => {
-    song.play();
+    if (word.audio) {
+      song.play();
+    }
   }, [word]);
 
   useEffect(() => {
