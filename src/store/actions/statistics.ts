@@ -3,7 +3,7 @@ import { IStatisticsAction, StatisticsActionTypes, IStatistics } from '../../typ
 import { ref } from '../../api/index';
 import { INFO_MESSAGES, ERROR_MESSAGES } from '../../utils/messages';
 
-export const fetchStatistics = async (dispatch: Dispatch<IStatisticsAction>) => {
+const fetchStatistics = async (dispatch: Dispatch<IStatisticsAction>) => {
   try {
     dispatch({ type: StatisticsActionTypes.FETCH_STATISTICS });
     await ref
@@ -22,10 +22,11 @@ export const fetchStatistics = async (dispatch: Dispatch<IStatisticsAction>) => 
   }
 };
 
-export const addStatistics = (statistics: IStatistics) => (dispatch: any) => {
+const addStatistics = (statistics: IStatistics) => (dispatch: Dispatch<IStatisticsAction>) => {
   try {
     dispatch({ type: StatisticsActionTypes.ADD_STATISTICS });
     ref
+      .collection('statistics')
       .doc(statistics.id)
       .set(statistics);
     dispatch({
@@ -38,3 +39,5 @@ export const addStatistics = (statistics: IStatistics) => (dispatch: any) => {
     });
   }
 };
+
+export { fetchStatistics, addStatistics };

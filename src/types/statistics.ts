@@ -12,7 +12,7 @@ export interface IStatistics {
   countOfIncorrectAnswers: number;
   score: number;
   level: number;
-  date: number;
+  date: string;
 }
 
 export enum StatisticsActionTypes {

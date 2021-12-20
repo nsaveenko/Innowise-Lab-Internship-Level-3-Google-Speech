@@ -42,7 +42,7 @@ const Statistics = () => {
                   <span>{item.level}</span>
                 </h3>
                 <h3 className='statistics-title'>
-                  Number of correct and incorrect answers:
+                  Number of correct/incorrect answers:
                   <span>
                     {item.countOfCorrectAnswers}
                     /

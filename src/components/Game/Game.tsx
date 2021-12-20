@@ -1,9 +1,14 @@
 /* eslint-disable react/jsx-no-bind */
 import React, { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Modal from 'react-modal';
+import moment from 'moment';
 import toast, { Toaster } from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { addStatistics } from '../../store/actions/statistics';
+import { useAuth } from '../../contexts/AuthContext';
 import { IWord } from '../../types/word';
-import { START_IMG_PATH } from '../../utils/constants';
+import { START_IMG_PATH, MULTIPLIER } from '../../utils/constants';
 import Levels from '../Levels/Levels';
 import Recognition from '../Recognition/Recognition';
 import WordsList from '../WordsList/WordsList';
@@ -19,6 +24,8 @@ export interface IResultItem {
 }
 
 const Game = () => {
+  const dispatch = useDispatch();
+  const { currentUserEmail } = useAuth();
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [activeLevel, setActiveLevel] = useState<number>(1);
   const [word, setWord] = useState<IWord>({ word: '', audio: '', image: START_IMG_PATH, transcription: '' });
@@ -37,6 +44,15 @@ const Game = () => {
 
   function closeModal() {
     setIsOpen(false);
+    dispatch(addStatistics({
+      id: uuidv4(),
+      email: currentUserEmail || '',
+      countOfCorrectAnswers: correctWords.length,
+      countOfIncorrectAnswers: incorrectWords.length,
+      level: activeLevel,
+      date: moment().format('LLLL'),
+      score: Math.round(correctWords.length * MULTIPLIER[activeLevel - 1]),
+    }));
     setResult([]);
   }
 
@@ -50,8 +66,6 @@ const Game = () => {
   }, [word]);
 
   useEffect(() => {
-    console.log('game comp', results);
-
     if (results.length >= 10) {
       openModal();
     }
