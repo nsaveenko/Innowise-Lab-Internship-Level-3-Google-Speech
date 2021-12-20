@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -11,8 +11,8 @@ import './Recognition.css';
 const Recognition = ({ word, results, setResult }: IRecognition) => {
   const { transcript, listening } = useSpeechRecognition();
   const isWordExist = results.filter((result: IResultItem) => result.word === word.word).length > 0;
-
   const answer: IResultItem = {};
+  const [cls, setCls] = useState<Array<string>>(['secondary-button']);
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     toast.error(INFO_MESSAGES.NOT_SUPPORT_RECOGNITION);
@@ -39,6 +39,12 @@ const Recognition = ({ word, results, setResult }: IRecognition) => {
   }, [word]);
 
   useEffect(() => {
+    if (listening) {
+      setCls([...cls, 'listening']);
+    }
+    if (!listening) {
+      setCls(['secondary-button']);
+    }
     if (!listening && transcript && !isWordExist) {
       answer.word = word.word;
       answer.transcription = word.transcription;
@@ -57,7 +63,7 @@ const Recognition = ({ word, results, setResult }: IRecognition) => {
       <Toaster position='top-right' />
       <div className='recognition'>
         <button
-          className='secondary-button'
+          className={cls.join(' ')}
           type='button'
           onClick={() => SpeechRecognition.startListening()}
         >

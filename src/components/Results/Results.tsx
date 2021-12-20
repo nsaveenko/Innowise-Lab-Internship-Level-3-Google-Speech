@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SoundIcon from '../../asserts/icons/SoundIcon/SoundIcon';
-import { IResultItem } from '../Game/IGame';
+import { IResultItem } from '../Game/Game';
 import { IResult } from './IResults';
 import './Results.css';
 
