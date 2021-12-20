@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import SoundIcon from '../../asserts/icons/SoundIcon/SoundIcon';
-import { IResultItem } from '../Game/Game';
+import { IResultItem } from '../Game/IGame';
 import { IResult } from './IResults';
 import './Results.css';
 
-const Results = ({ results }: IResult) => {
-  const correctWords: any = results
-    .filter((result: IResultItem) => result.isCorrect === true);
-  const incorrectWords: any = results
-    .filter((result: IResultItem) => result.isCorrect === false);
+const Results = ({ incorrectWords, correctWords }: IResult) => {
   const [currWord, setCurrWord] = useState<IResultItem>();
   const song = new Audio(currWord?.audioPath);
 
