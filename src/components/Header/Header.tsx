@@ -32,6 +32,13 @@ export default function Header() {
       <h3 className='email-title'>{currentUserEmail}</h3>
       <button
         className='primary-button header-button'
+        type='button'
+        onClick={() => history.push('/statistics')}
+      >
+        Score
+      </button>
+      <button
+        className='primary-button header-button'
         type='submit'
         onClick={handleLogOut}
       >
