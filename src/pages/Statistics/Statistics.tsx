@@ -3,17 +3,22 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import useTypedSelector from '../../hooks/useTypeSelector';
 import Header from '../../components/Header/Header';
-import { fetchStatistics } from '../../store/actions/statistics';
+// import { fetchStatistics } from '../../store/actions/statistics';
+import { fetchStatistics } from '../../store/reducers/statisticsReducer';
 import './Statistics.css';
 import { IStatistics } from '../../types/statistics';
 import { INFO_MESSAGES } from '../../utils/messages';
 
 const Statistics = () => {
-  const { statistics, error, loading } = useTypedSelector((state) => state.statistics);
+  const { statistics, error, loading } = useTypedSelector((state) => {
+    console.log(state);
+    return state.statisticsReducer;
+  });
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchStatistics);
+    dispatch(fetchStatistics());
+    console.log('comp st', statistics);
   }, []);
 
   if (error) {
@@ -24,6 +29,7 @@ const Statistics = () => {
     <>
       <Header />
       <main className='main'>
+        <h1>stt</h1>
         <Toaster position='top-right' />
         {loading && <h3 className='info-message'>{INFO_MESSAGES.LOADING}</h3>}
         <ul className='statistics-list'>

@@ -25,4 +25,17 @@ const postReducer = (state = initialState, action: IStatisticsAction): IStatisti
   }
 };
 
+export const fetchStatistics = () => ({
+  type: StatisticsActionTypes.FETCH_STATISTICS,
+});
+
+export const fetchStatisticsSuccess = (payload: any) => ({
+  type: StatisticsActionTypes.FETCH_STATISTICS_SUCCESS,
+  payload,
+});
+
+export const fetchStatisticsError = () => ({
+  type: StatisticsActionTypes.FETCH_STATISTICS_ERROR,
+});
+
 export default postReducer;

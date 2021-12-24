@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import useTypedSelector from '../../hooks/useTypeSelector';
-import fetchWords from '../../store/actions/word';
+import { fetchWords } from '../../store/reducers/wordReducer';
 import { IWord } from '../../types/word';
 import WordItem from '../WordItem/WordItem';
 import { IWordList } from './IWordList';
@@ -10,11 +10,11 @@ import './WordsList.css';
 import { IWordItem } from '../WordItem/IWordItem';
 
 const WordsList = ({ results, page, setWord }: IWordList) => {
-  const { words, error, loading } = useTypedSelector((state) => state.word);
+  const { words, error, loading } = useTypedSelector((state) => state.wordReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchWords(page));
+    dispatch(fetchWords(1));
   }, []);
 
   useEffect(() => {

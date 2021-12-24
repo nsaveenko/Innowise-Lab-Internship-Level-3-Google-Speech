@@ -20,16 +20,17 @@ export enum WordActionTypes {
   FETCH_WORDS_ERROR = 'FETCH_WORDS_ERROR'
 }
 
-interface IFetchWordAction {
+export interface IFetchWordAction {
   type: WordActionTypes.FETCH_WORDS;
+  payload: number;
 }
 
-interface IFetchWordsSuccessAction {
+export interface IFetchWordsSuccessAction {
   type: WordActionTypes.FETCH_WORDS_SUCCESS;
   payload: Array<IWord>;
 }
 
-interface IFetchWordsErrorAction {
+export interface IFetchWordsErrorAction {
   type: WordActionTypes.FETCH_WORDS_ERROR;
   payload: string;
 }

@@ -3,8 +3,8 @@ import wordReducer from './wordReducer';
 import statisticsReducer from './statisticsReducer';
 
 export const rootReducer = combineReducers({
-  word: wordReducer,
-  statistics: statisticsReducer,
+  wordReducer,
+  statisticsReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
