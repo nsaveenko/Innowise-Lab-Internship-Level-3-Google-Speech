@@ -40,12 +40,12 @@ interface IFetchStatisticsErrorAction {
 
 interface IAddStatisticsAction {
   type: StatisticsActionTypes.ADD_STATISTICS;
-  payload: any;
+  payload: IStatistics;
 }
 
 interface IAddStatisticsSuccessAction {
   type: StatisticsActionTypes.ADD_STATISTICS_SUCCESS;
-  payload: string;
+  payload: IStatistics;
 }
 
 interface IAddStatisticsErrorAction {

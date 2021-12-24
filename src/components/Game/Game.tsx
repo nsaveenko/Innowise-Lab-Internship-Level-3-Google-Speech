@@ -66,10 +66,14 @@ const Game = () => {
   }, [word]);
 
   useEffect(() => {
-    if (results.length >= 3) {
+    if (results.length >= 10) {
       openModal();
     }
   }, [results]);
+
+  useEffect(() => {
+    setResult([]);
+  }, [activeLevel]);
 
   return (
     <>

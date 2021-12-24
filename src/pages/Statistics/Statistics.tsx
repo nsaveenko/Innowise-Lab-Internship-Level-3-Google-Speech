@@ -10,14 +10,12 @@ import './Statistics.css';
 
 const Statistics = () => {
   const { statistics, error, loading } = useTypedSelector((state) => {
-    console.log(state);
     return state.statisticsReducer;
   });
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchStatistics());
-    console.log('comp st', statistics);
   }, []);
 
   if (error) {
@@ -28,7 +26,7 @@ const Statistics = () => {
     <>
       <Header />
       <main className='main'>
-        <h1>stt</h1>
+        <h5>Score</h5>
         <Toaster position='top-right' />
         {loading && <h3 className='info-message'>{INFO_MESSAGES.LOADING}</h3>}
         <ul className='statistics-list'>

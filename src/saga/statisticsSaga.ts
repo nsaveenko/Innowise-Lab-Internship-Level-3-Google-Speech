@@ -3,7 +3,7 @@ import { fetchStatisticsSuccess, fetchStatisticsError, addStatisticsError, addSt
 import { IStatistics, StatisticsActionTypes } from '../types/statistics';
 import { ref } from '../api/index';
 
-function* fetchStatistics(): any {
+function* fetchStatistics(): Generator<any, void, any> {
   yield ref
     .collection('statistics')
     .orderBy('score', 'desc')

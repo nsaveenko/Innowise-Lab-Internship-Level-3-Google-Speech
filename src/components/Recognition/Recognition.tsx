@@ -25,13 +25,6 @@ const Recognition = ({ word, results, setResult }: IRecognition) => {
     }
   };
 
-  const correct = () => {
-    if (!isWordExist) {
-      answer.isCorrect = true;
-      setResult([...results, answer]);
-    }
-  };
-
   useEffect(() => {
     answer.word = word.word;
     answer.transcription = word.transcription;
@@ -75,13 +68,6 @@ const Recognition = ({ word, results, setResult }: IRecognition) => {
           onClick={() => skip()}
         >
           Skip
-        </button>
-        <button
-          className='secondary-button'
-          type='button'
-          onClick={() => correct()}
-        >
-          Correct
         </button>
       </div>
     </>
