@@ -40,6 +40,7 @@ interface IFetchStatisticsErrorAction {
 
 interface IAddStatisticsAction {
   type: StatisticsActionTypes.ADD_STATISTICS;
+  payload: any;
 }
 
 interface IAddStatisticsSuccessAction {

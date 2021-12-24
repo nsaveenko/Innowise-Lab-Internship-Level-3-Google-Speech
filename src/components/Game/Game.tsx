@@ -66,7 +66,7 @@ const Game = () => {
   }, [word]);
 
   useEffect(() => {
-    if (results.length >= 10) {
+    if (results.length >= 3) {
       openModal();
     }
   }, [results]);

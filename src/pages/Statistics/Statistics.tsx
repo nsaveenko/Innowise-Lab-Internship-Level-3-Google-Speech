@@ -3,11 +3,10 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import useTypedSelector from '../../hooks/useTypeSelector';
 import Header from '../../components/Header/Header';
-// import { fetchStatistics } from '../../store/actions/statistics';
-import { fetchStatistics } from '../../store/reducers/statisticsReducer';
-import './Statistics.css';
+import { fetchStatistics } from '../../store/actions/statistics';
 import { IStatistics } from '../../types/statistics';
 import { INFO_MESSAGES } from '../../utils/messages';
+import './Statistics.css';
 
 const Statistics = () => {
   const { statistics, error, loading } = useTypedSelector((state) => {

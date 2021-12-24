@@ -1,5 +1,5 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
-import { fetchWordsSuccess, fetchWordsError } from '../store/reducers/wordReducer';
+import { fetchWordsSuccess, fetchWordsError } from '../store/actions/wordsAction';
 import { WordActionTypes, IFetchWordAction } from '../types/word';
 
 const fetchWordsFromApi = (page: number) => fetch(`https://afternoon-falls-25894.herokuapp.com/words?page=${page}&group=0`);

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import useTypedSelector from '../../hooks/useTypeSelector';
-import { fetchWords } from '../../store/reducers/wordReducer';
+import { fetchWords } from '../../store/actions/wordsAction';
 import { IWord } from '../../types/word';
 import WordItem from '../WordItem/WordItem';
 import { IWordList } from './IWordList';
