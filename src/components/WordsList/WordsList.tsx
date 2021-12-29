@@ -21,6 +21,13 @@ const WordsList = ({ results, page, setWord }: IWordList) => {
     dispatch(fetchWords(page));
   }, [page]);
 
+  const handleWorldClick = (word: IWordItem) => {
+    setWord(word);
+    if (word.translation) {
+      toast(word.translation);
+    }
+  };
+
   if (loading) {
     return <h1 className='info-message'>Loading...</h1>;
   }
@@ -28,13 +35,6 @@ const WordsList = ({ results, page, setWord }: IWordList) => {
   if (error) {
     toast.error(error);
   }
-
-  const handleWorldClick = (word: IWordItem) => {
-    setWord(word);
-    if (word.translation) {
-      toast(word.translation);
-    }
-  };
 
   return (
     <div className='words-list'>

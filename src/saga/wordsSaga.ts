@@ -1,8 +1,9 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
 import { fetchWordsSuccess, fetchWordsError } from '../store/actions/wordsAction';
 import { WordActionTypes, IFetchWordAction } from '../types/word';
+import wordsApi from '../api/urls';
 
-const fetchWordsFromApi = (page: number) => fetch(`https://afternoon-falls-25894.herokuapp.com/words?page=${page}&group=0`);
+const fetchWordsFromApi = (page: number) => fetch(`${wordsApi}words?page=${page}&group=0`);
 
 function* fetchWordsWorker(action: IFetchWordAction) : Generator<any, void, any> {
   try {

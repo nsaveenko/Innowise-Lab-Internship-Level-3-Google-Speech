@@ -25,6 +25,10 @@ const Recognition = ({ word, results, setResult }: IRecognition) => {
     }
   };
 
+  const start = () => {
+    SpeechRecognition.startListening();
+  };
+
   useEffect(() => {
     answer.word = word.word;
     answer.transcription = word.transcription;
@@ -44,9 +48,8 @@ const Recognition = ({ word, results, setResult }: IRecognition) => {
       answer.audioPath = word.audio;
       if (transcript === word.word) {
         answer.isCorrect = true;
-      } else if (transcript !== word.word) {
-        answer.isCorrect = false;
       }
+      answer.isCorrect = false;
       setResult([...results, answer]);
     }
   }, [transcript, listening]);
@@ -58,14 +61,14 @@ const Recognition = ({ word, results, setResult }: IRecognition) => {
         <button
           className={cls.join(' ')}
           type='button'
-          onClick={() => SpeechRecognition.startListening()}
+          onClick={start}
         >
           Record answer
         </button>
         <button
           className='secondary-button'
           type='button'
-          onClick={() => skip()}
+          onClick={skip}
         >
           Skip
         </button>

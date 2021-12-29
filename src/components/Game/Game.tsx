@@ -26,7 +26,7 @@ export interface IResultItem {
 const Game = () => {
   const dispatch = useDispatch();
   const { currentUserEmail } = useAuth();
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = React.useState<boolean>(false);
   const [activeLevel, setActiveLevel] = useState<number>(1);
   const [word, setWord] = useState<IWord>({ word: '', audio: '', image: START_IMG_PATH, transcription: '' });
   const [results, setResult] = useState<IResultItem[]>([]);
@@ -66,7 +66,7 @@ const Game = () => {
   }, [word]);
 
   useEffect(() => {
-    if (results.length >= 10) {
+    if (results.length >= 2) {
       openModal();
     }
   }, [results]);
@@ -88,7 +88,7 @@ const Game = () => {
           <button
             className='secondary-button'
             type='button'
-            onClick={() => closeModal()}
+            onClick={closeModal}
           >
             Close
           </button>

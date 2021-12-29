@@ -10,6 +10,10 @@ export default function Header() {
   const { currentUserEmail, signout } = useAuth();
   const [error, setError] = useState<string>('');
 
+  function showStatistics() {
+    history.push('/statistics');
+  }
+
   async function handleLogOut() {
     setError('');
 
@@ -33,7 +37,7 @@ export default function Header() {
       <button
         className='primary-button header-button'
         type='button'
-        onClick={() => history.push('/statistics')}
+        onClick={showStatistics}
       >
         Score
       </button>

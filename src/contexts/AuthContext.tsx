@@ -15,7 +15,7 @@ export function useAuth(): IAuthContext {
 }
 
 const AuthProvider: FC = ({ children }) => {
-  const [currentUserEmail, setCurrentUserEmail] = useState('');
+  const [currentUserEmail, setCurrentUserEmail] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
 
   const signup = (email: string, password: string) => {
