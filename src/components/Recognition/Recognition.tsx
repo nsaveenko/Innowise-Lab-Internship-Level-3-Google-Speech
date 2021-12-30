@@ -8,9 +8,10 @@ import { IResultItem } from '../Game/Game';
 import { IRecognition } from './IRecognition';
 import './Recognition.css';
 
-const Recognition = ({ word, results, setResult }: IRecognition) => {
+const Recognition = ({ wordItem, results, setResult }: IRecognition) => {
+  const { word, transcription, audio } = wordItem;
   const { transcript, listening } = useSpeechRecognition();
-  const isWordExist = results.filter((result: IResultItem) => result.word === word.word).length > 0;
+  const isWordExist = results.filter((result: IResultItem) => result.word === word).length > 0;
   const answer: IResultItem = {};
   const [cls, setCls] = useState<Array<string>>(['secondary-button']);
 
@@ -30,10 +31,10 @@ const Recognition = ({ word, results, setResult }: IRecognition) => {
   };
 
   useEffect(() => {
-    answer.word = word.word;
-    answer.transcription = word.transcription;
-    answer.audioPath = word.audio;
-  }, [word]);
+    answer.word = word;
+    answer.transcription = transcription;
+    answer.audioPath = audio;
+  }, [wordItem]);
 
   useEffect(() => {
     if (listening) {
@@ -43,10 +44,10 @@ const Recognition = ({ word, results, setResult }: IRecognition) => {
       setCls(['secondary-button']);
     }
     if (!listening && transcript && !isWordExist) {
-      answer.word = word.word;
-      answer.transcription = word.transcription;
-      answer.audioPath = word.audio;
-      if (transcript === word.word) {
+      answer.word = word;
+      answer.transcription = transcription;
+      answer.audioPath = audio;
+      if (transcript === word) {
         answer.isCorrect = true;
       }
       answer.isCorrect = false;

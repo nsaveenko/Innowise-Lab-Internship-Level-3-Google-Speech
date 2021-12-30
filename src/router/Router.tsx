@@ -7,7 +7,6 @@ import Dashboard from '../pages/Dashboard/Dashboard';
 import Statistics from '../pages/Statistics/Statistics';
 import RoutesNav from '../utils/routesNav';
 
-
 const Router: FC = () => {
   return (
     <BrowserRouter>

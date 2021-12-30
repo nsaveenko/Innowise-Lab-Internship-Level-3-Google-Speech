@@ -66,7 +66,7 @@ const Game = () => {
   }, [word]);
 
   useEffect(() => {
-    if (results.length >= 2) {
+    if (results.length >= 10) {
       openModal();
     }
   }, [results]);
@@ -113,7 +113,7 @@ const Game = () => {
         />
         <Recognition
           activeLevel={activeLevel}
-          word={word}
+          wordItem={word}
           results={results}
           setResult={setResult}
         />

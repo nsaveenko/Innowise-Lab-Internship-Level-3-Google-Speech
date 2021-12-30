@@ -3,7 +3,7 @@ import { IResultItem } from '../Game/Game';
 
 export interface IRecognition {
   activeLevel: number;
-  word: IWord;
+  wordItem: IWord;
   results: IResultItem[];
   setResult: any;
 }

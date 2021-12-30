@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { NavLink, Routes, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { ERROR_MESSAGES } from '../../utils/messages';
 import RoutesNav from '../../utils/routesNav';
