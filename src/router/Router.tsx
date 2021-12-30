@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import SignUp from '../pages/Auth/SignUp';
 import SignIn from '../pages/Auth/SignIn';
@@ -9,12 +9,12 @@ import Statistics from '../pages/Statistics/Statistics';
 const Router: FC = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path='/signup' exact component={SignUp} />
-        <Route path='/signin' exact component={SignIn} />
-        <PrivateRoute path='/' exact component={Dashboard} />
-        <PrivateRoute path='/statistics' exact component={Statistics} />
-      </Switch>
+      <Routes>
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/signin' element={<SignIn />} />
+        <Route path='/' element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path='/statistics' element={<PrivateRoute><Statistics /></PrivateRoute>} />
+      </Routes>
     </BrowserRouter>
   );
 };

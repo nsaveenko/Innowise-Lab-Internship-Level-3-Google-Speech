@@ -1,12 +1,12 @@
 import React, { FC, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { ERROR_MESSAGES } from '../../utils/messages';
 import { useAuth } from '../../contexts/AuthContext';
 import './Auth.css';
 
 const SignIn: FC = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const { signin } = useAuth();
@@ -24,7 +24,7 @@ const SignIn: FC = () => {
 
     try {
       await signin(email, password);
-      history.push('/');
+      navigate('/');
     } catch {
       toast.error(ERROR_MESSAGES.SIGN_IN_MESSAGE);
     }

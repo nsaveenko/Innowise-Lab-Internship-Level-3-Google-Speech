@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { ERROR_MESSAGES } from '../../utils/messages';
 import './Header.css';
 
 export default function Header() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { currentUserEmail, signout } = useAuth();
   const [error, setError] = useState<string>('');
 
   function showStatistics() {
-    history.push('/statistics');
+    navigate('/statistics');
   }
 
   async function handleLogOut() {
@@ -19,7 +19,7 @@ export default function Header() {
 
     try {
       await signout();
-      history.push('/signin');
+      navigate('/signin');
     } catch {
       setError(ERROR_MESSAGES.SIGN_OUT_MESSAGE);
     }

@@ -1,13 +1,13 @@
 import React, { FC, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { ERROR_MESSAGES, INFO_MESSAGES } from '../../utils/messages';
 import './Auth.css';
 
 const SignUp: FC = () => {
   const { signup } = useAuth();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
@@ -37,7 +37,7 @@ const SignUp: FC = () => {
         setLoading(true);
         await signup(email, password);
         toast.success(INFO_MESSAGES.CREATED);
-        history.push('/signin');
+        navigate('/signin');
       } catch {
         toast.error(ERROR_MESSAGES.SIGN_UP_MESSAGE_ACCOUNT_CREATION);
       }
