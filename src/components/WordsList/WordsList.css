@@ -1,0 +1,13 @@
+.words-list {
+  padding-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 20px;
+  row-gap: 55px;
+}
+
+.info-message {
+  font-weight: 200;
+  padding-top: 30px;
+}

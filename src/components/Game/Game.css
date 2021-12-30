@@ -1,0 +1,10 @@
+.game-image {
+  width: 400px;
+  height: 270px;
+}
+
+.level-title {
+  display: flex;
+  justify-content: center;
+  font-weight: 200;
+}

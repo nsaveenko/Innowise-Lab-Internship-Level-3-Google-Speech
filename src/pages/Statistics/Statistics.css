@@ -1,0 +1,32 @@
+.statistics-list {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.statistics-item {
+  width: 50%;
+  padding-bottom: 15px;
+  margin: 10px;
+  border: 1px solid rgb(206, 212, 218);
+  border-radius: 5px;
+  box-shadow: rgb(206, 212, 218) 0px 2px 2px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.statistics-title {
+  padding: 5px 20px;
+  font-weight: 400;
+}
+
+.statistics-title span {
+  margin-left: 5px;
+  font-weight: 300;
+  color: #566165;
+}
+
+.email {
+  color: #5bddc6;
+}
