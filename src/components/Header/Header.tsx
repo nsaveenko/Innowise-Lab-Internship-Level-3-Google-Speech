@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, Routes, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { ERROR_MESSAGES } from '../../utils/messages';
+import RoutesNav from '../../utils/routesNav';
 import './Header.css';
 
 export default function Header() {
@@ -11,7 +12,7 @@ export default function Header() {
   const [error, setError] = useState<string>('');
 
   function showStatistics() {
-    navigate('/statistics');
+    navigate(RoutesNav.STATISTICS);
   }
 
   async function handleLogOut() {
@@ -19,7 +20,7 @@ export default function Header() {
 
     try {
       await signout();
-      navigate('/signin');
+      navigate(RoutesNav.SIGNIN);
     } catch {
       setError(ERROR_MESSAGES.SIGN_OUT_MESSAGE);
     }
@@ -32,7 +33,7 @@ export default function Header() {
   return (
     <div className='header'>
       <Toaster position='top-right' />
-      <NavLink to='/' className='page-title'>Speakit</NavLink>
+      <NavLink to={RoutesNav.DASHBOARD} className='page-title'>Speakit</NavLink>
       <h3 className='email-title'>{currentUserEmail}</h3>
       <button
         className='primary-button header-button'

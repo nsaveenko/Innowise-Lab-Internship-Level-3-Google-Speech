@@ -5,15 +5,17 @@ import SignUp from '../pages/Auth/SignUp';
 import SignIn from '../pages/Auth/SignIn';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import Statistics from '../pages/Statistics/Statistics';
+import RoutesNav from '../utils/routesNav';
+
 
 const Router: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/signin' element={<SignIn />} />
-        <Route path='/' element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-        <Route path='/statistics' element={<PrivateRoute><Statistics /></PrivateRoute>} />
+        <Route path={RoutesNav.SIGNUP} element={<SignUp />} />
+        <Route path={RoutesNav.SIGNIN} element={<SignIn />} />
+        <Route path={RoutesNav.DASHBOARD} element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path={RoutesNav.STATISTICS} element={<PrivateRoute><Statistics /></PrivateRoute>} />
       </Routes>
     </BrowserRouter>
   );

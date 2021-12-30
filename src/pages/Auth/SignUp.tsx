@@ -3,6 +3,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { ERROR_MESSAGES, INFO_MESSAGES } from '../../utils/messages';
+import Routes from '../../utils/routesNav';
 import './Auth.css';
 
 const SignUp: FC = () => {
@@ -37,7 +38,7 @@ const SignUp: FC = () => {
         setLoading(true);
         await signup(email, password);
         toast.success(INFO_MESSAGES.CREATED);
-        navigate('/signin');
+        navigate(Routes.SIGNIN);
       } catch {
         toast.error(ERROR_MESSAGES.SIGN_UP_MESSAGE_ACCOUNT_CREATION);
       }
@@ -90,7 +91,7 @@ const SignUp: FC = () => {
         </form>
         <h2 className='auth-info'>
           Already have an account?
-          <NavLink to='/signin' className='link'>Sign In</NavLink>
+          <NavLink to={Routes.SIGNIN} className='link'>Sign In</NavLink>
         </h2>
       </div>
     </main>

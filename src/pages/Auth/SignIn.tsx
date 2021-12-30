@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { ERROR_MESSAGES } from '../../utils/messages';
 import { useAuth } from '../../contexts/AuthContext';
 import './Auth.css';
+import Routes from '../../utils/routesNav';
 
 const SignIn: FC = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const SignIn: FC = () => {
 
     try {
       await signin(email, password);
-      navigate('/');
+      navigate(Routes.DASHBOARD);
     } catch {
       toast.error(ERROR_MESSAGES.SIGN_IN_MESSAGE);
     }
@@ -64,7 +65,7 @@ const SignIn: FC = () => {
         </form>
         <h2 className='auth-info'>
           Do not have an account yet?
-          <NavLink to='/signup' className='link'>
+          <NavLink to={Routes.SIGNUP} className='link'>
             Register now
           </NavLink>
         </h2>
