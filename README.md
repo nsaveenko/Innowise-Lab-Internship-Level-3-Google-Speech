@@ -47,6 +47,11 @@ Screenshots:
 8. Statistics page
 ![image](https://user-images.githubusercontent.com/31535378/147351968-0a456f5e-ff4d-4096-8ae7-51ef83b2921d.png)
 
+![image](https://user-images.githubusercontent.com/31535378/173392561-00773eeb-fc19-4446-932e-bdf354a85703.png)
+![image](https://user-images.githubusercontent.com/31535378/173392653-0fb05234-4ccb-4590-b4fc-d6ece3ca0003.png)
+![image](https://user-images.githubusercontent.com/31535378/173392697-e1b06165-6916-4469-bbc8-981264ba3d8d.png)
+
+
 
 
 
